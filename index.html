@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        body {
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+        }
+    </style>
+
+</head>
+<body background="https://i.pinimg.com/originals/91/c9/51/91c951de2c4faa8ce3487dc9b7c65fdb.png">
+
+<body>
+
+<img  id="dung" src="dung.jpg" style="width: 200px;
+height: 200px;
+    position: absolute;
+    top: 0px;
+    left: 0px; ">
+<img class="h1" id="diep" src="diep.jpg" style="width: 200px;
+height: 200px;
+    position: absolute;
+    top: 150px;
+    left: 1000px;">
+
+<script>
+    let dung1 = document.getElementById("dung");
+    let diep1 = document.getElementById("diep");
+
+    document.addEventListener("keydown", diChuyen)
+
+    function sangPhai() {
+        dung1.style.left = parseInt(dung1.style.left) + 20 + "px";
+    }
+
+    function sangTrai() {
+        dung1.style.left = parseInt(dung1.style.left) - 20 + "px";
+    }
+
+    function moveUp() {
+        dung1.style.top = parseInt(dung1.style.top) - 20 + "px";
+    }
+
+    function moveDown() {
+        dung1.style.top = parseInt(dung1.style.top) + 20 + "px";
+    }
+
+    function diChuyen(go) {
+        let a = parseInt(dung1.style.left);
+        let b = parseInt(dung1.style.top);
+        let c = parseInt(diep1.style.left);
+        let d = parseInt(diep1.style.top);
+
+        let j = a + parseInt(dung1.style.width);
+        let q = b + parseInt(dung1.style.height);
+        let k = c + parseInt(diep1.style.width);
+        let at = d + parseInt(diep1.style.height);
+
+        console.log(j)
+        console.log(c)
+
+        let x = j >= c && k >= a;
+        let y = q >= d && at >= b;
+
+        if (x && y) {
+            if (j == c) {
+                sangTrai();
+            }
+            if (q == d) {
+                moveUp();
+            }
+            if (k == a) {
+                sangPhai();
+            }
+            if (at == b) {
+                moveDown();
+            }
+            alert(!"Tớ chào cậu, tớ Dũng, nhà ở đâu thì không nói ");
+            alert("Do you love me?");
+        } else {
+            switch (go.keyCode) {
+                case 39:
+                    sangPhai()
+                    break;
+                case 37:
+                    sangTrai()
+                    break;
+                case 38:
+                    moveUp();
+                    break;
+                case 40:
+                    moveDown();
+                    break;
+            }
+        }
+    }
+
+
+</script>
+</body>
+</html>
